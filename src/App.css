@@ -28,7 +28,7 @@ list-style-type: none;
 }
 
 .scrollable {
-  height: 650px;
+  height: 625px;
   overflow-y: scroll;
 }
 
