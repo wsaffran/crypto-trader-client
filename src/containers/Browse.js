@@ -1,6 +1,6 @@
 import React from 'react'
 import CoinObject from '../components/CoinObject'
-import CoinStat from './CoinStat'
+import CoinStatGraph from './CoinStatGraph'
 import v4 from 'uuid'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -17,7 +17,7 @@ class Browse extends React.Component {
   renderCoinInfo = () => {
     return this.props.coins.map(coin => {
       if (coin.classActive === true) {
-        return <CoinStat key={v4()} coin={coin} />
+        return <CoinStatGraph key={v4()} coin={coin} />
       }
     })
   }
@@ -25,6 +25,9 @@ class Browse extends React.Component {
   render() {
     return (
       <div>
+        <Row>
+          ...
+        </Row>
         <Row>
           <Col xs={8}>
             {this.renderCoinInfo()}
@@ -36,12 +39,6 @@ class Browse extends React.Component {
           </Col>
         </Row>
       </div>
-
-
-
-      // <listGroup>
-      //   {this.renderCoins()}
-      // </listGroup>
     )
   }
 }
