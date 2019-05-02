@@ -1,23 +1,29 @@
 import React from 'react'
 import Browse from './Browse'
 import NavBar from '../components/NavBar'
+import LearnMore from '../components/LearnMore'
 
 class AppContainer extends React.Component {
 
   state = {
-    coins: []
+    coins: [],
+    selection: "browse"
   }
 
   handleClick = (e) => {
+    let newSelection;
     if (e.target.name === "portfolio") {
-      console.log("portfolio")
+      newSelection = "portfolio"
     } else if (e.target.name === "learn-more") {
-      console.log("learn more")
+      newSelection = "learn-more"
     } else if (e.target.name === "browse") {
-      console.log("browse")
-    } else {
+      newSelection = "browse"
+    } else if (e.target.name === "user") {
       console.log("user")
     }
+    this.setState({
+      selection: newSelection
+    })
   }
 
   componentDidMount() {
@@ -52,11 +58,21 @@ class AppContainer extends React.Component {
     })
   }
 
+  renderSelection() {
+    console.log("function called!")
+    if (this.state.selection === "learn-more") {
+      return <LearnMore />
+    } else if (this.state.selection === "browse") {
+      return <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
+    }
+  }
+
   render() {
+    console.log("render function called!")
     return (
       <div className="page-container">
         <NavBar handleClick={this.handleClick}/>
-        <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
+        {this.renderSelection()}
       </div>
     )
   }

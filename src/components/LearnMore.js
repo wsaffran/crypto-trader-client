@@ -99,7 +99,8 @@ const LearnMore = (props) => {
         </Card.Body>
       </Card>
       <br />
-    </div>;
+    </div>
+
   )
 }
 
