@@ -100,6 +100,7 @@ const LearnMore = (props) => {
       </Card>
       <br />
     </div>
+
   )
 }
 

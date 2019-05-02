@@ -4,7 +4,6 @@ import CoinStat from './CoinStat'
 import v4 from 'uuid'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
 
 
 class Browse extends React.Component {
