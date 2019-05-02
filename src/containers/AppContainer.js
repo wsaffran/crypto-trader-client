@@ -55,13 +55,8 @@ class AppContainer extends React.Component {
   render() {
     return (
       <div className="page-container">
-<<<<<<< HEAD
-        <NavBar />
-        <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
-=======
         <NavBar handleClick={this.handleClick}/>
-        <CryptoPage coins={this.state.coins}/>
->>>>>>> fc7ebb1d4c703e1e5c4ab8e1128941130f71c471
+        <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
       </div>
     )
   }

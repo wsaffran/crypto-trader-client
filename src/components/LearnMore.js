@@ -3,7 +3,9 @@ import Card from 'react-bootstrap/Card'
 
 const LearnMore = (props) => {
   return (
+
     <div>
+
       <Card bg="primary" text="white" style={{ width: '18rem' }}>
         <Card.Header>Header</Card.Header>
         <Card.Body>
@@ -99,7 +101,9 @@ const LearnMore = (props) => {
         </Card.Body>
       </Card>
       <br />
+
     </div>;
+
   )
 }
 
