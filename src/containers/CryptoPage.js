@@ -22,4 +22,4 @@ class CryptoPage extends React.Component {
 
 }
 
-export default CryptoPage
+export default CryptoPage;
