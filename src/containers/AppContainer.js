@@ -8,6 +8,18 @@ class AppContainer extends React.Component {
     coins: []
   }
 
+  handleClick = (e) => {
+    if (e.target.name === "portfolio") {
+      console.log("portfolio")
+    } else if (e.target.name === "learn-more") {
+      console.log("learn more")
+    } else if (e.target.name === "browse") {
+      console.log("browse")
+    } else {
+      console.log("user")
+    }
+  }
+
   componentDidMount() {
     fetch('https://api.coinranking.com/v1/public/coins')
     .then(res => res.json())
@@ -43,8 +55,13 @@ class AppContainer extends React.Component {
   render() {
     return (
       <div className="page-container">
+<<<<<<< HEAD
         <NavBar />
         <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
+=======
+        <NavBar handleClick={this.handleClick}/>
+        <CryptoPage coins={this.state.coins}/>
+>>>>>>> fc7ebb1d4c703e1e5c4ab8e1128941130f71c471
       </div>
     )
   }
