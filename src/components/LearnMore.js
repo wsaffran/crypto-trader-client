@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card'
 
 const LearnMore = (props) => {
   return (
-    <div>
+    <div class='container'>
     <Card>
       <Card.Header as="h5">What is CryptoTrader?</Card.Header>
       <Card.Body>
@@ -28,7 +28,7 @@ const LearnMore = (props) => {
           <Card.Body>
             <Card.Title>simulating your crypto transactions is a click away.</Card.Title>
             <Card.Text>
-            Begin by clicking the "browse" button above. From there, you'll be able to view the latest values of any cryptocurrency, and purchase an amount, adding it to your portfolio. Monitor your portfolio and be ready to sell if you're skeptical of your assets!
+            Begin by clicking the "browse" button above. From there, you'll be able to view the latest values of any cryptocurrency we offer here, and purchase an amount, adding it to your portfolio. Monitor your portfolio and be ready to sell if you're skeptical of your assets!
             </Card.Text>
           </Card.Body>
       </Card>
