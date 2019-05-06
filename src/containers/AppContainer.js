@@ -2,12 +2,17 @@ import React from 'react'
 import Browse from './Browse'
 import NavBar from '../components/NavBar'
 import LearnMore from '../components/LearnMore'
+import Portfolio from '../components/Portfolio'
+
+const CryptoAPI = 'https://api.coinranking.com/v1/public/coins'
+
 
 class AppContainer extends React.Component {
 
   state = {
     coins: [],
-    selection: "browse"
+    selection: "browse",
+    currentUser: 1
   }
 
   handleClick = (e) => {
@@ -26,8 +31,23 @@ class AppContainer extends React.Component {
     })
   }
 
+  // addToPortfolio(user_id, coin_id, num_of_coins, price, time_of_purchase) {
+  //   fetch(`localhost:3001/users/${user_id}/purchases`, {method: "POST",
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify({
+  //       user_id: user_id,
+  //       coin_id: coin_id,
+  //       num_of_coins: num_of_coins,
+  //       price: price,
+  //       time_of_purchase: time_of_purchase})
+  //     })
+  //     .then(res => res.json())
+  //     .then(json )
+  //
+  // }
+
   componentDidMount() {
-    fetch('https://api.coinranking.com/v1/public/coins')
+    fetch(CryptoAPI)
     .then(res => res.json())
     .then(data => {
       this.setState({
@@ -59,7 +79,7 @@ class AppContainer extends React.Component {
     if (this.state.selection === "learn-more") {
       return <LearnMore />
     } else if (this.state.selection === "browse") {
-      return <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
+      return <Browse coins={this.state.coins} currentUser={this.state.currentUser} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
     }
   }
 

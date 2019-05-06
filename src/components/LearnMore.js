@@ -15,7 +15,7 @@ const LearnMore = (props) => {
       </Card.Body>
       </Card>
       <Card>
-        <Card.Header as="h5">What is Cryptocurrency?</Card.Header>
+        <Card.Header as="h5">What is cryptocurrency?</Card.Header>
         <Card.Body>
           <Card.Title>digital assets of the future.</Card.Title>
           <Card.Text>

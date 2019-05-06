@@ -4,6 +4,8 @@ import CoinStatGraph from './CoinStatGraph'
 import v4 from 'uuid'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Form, Button } from 'react-bootstrap'
+
 
 
 class Browse extends React.Component {
@@ -17,7 +19,20 @@ class Browse extends React.Component {
   renderCoinInfo = () => {
     return this.props.coins.map(coin => {
       if (coin.classActive === true) {
-        return <CoinStatGraph key={v4()} coin={coin} />
+        console.log(this.props.currentUser, coin.id, coin.price, (new Date().toLocaleString()))
+        return (
+        <div>
+          <CoinStatGraph key={v4()} coin={coin} />
+          <br></br><br></br>
+            <Form>
+              <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Label>Purchase</Form.Label>
+                <Form.Control type="email" placeholder="# of units" />
+              </Form.Group>
+              <Button onClick={1} className="btn btn-primary btn-large centerButton" type="submit">Confirm Purchase</Button>
+            </Form>
+          </div>
+        )
       }
     })
   }
@@ -43,4 +58,4 @@ class Browse extends React.Component {
   }
 }
 
-export default Browse
+export default Browse;
