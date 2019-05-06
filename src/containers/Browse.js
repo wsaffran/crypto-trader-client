@@ -7,8 +7,18 @@ import Col from 'react-bootstrap/Col'
 import { Form, Button } from 'react-bootstrap'
 
 
-
 class Browse extends React.Component {
+
+  state={
+    value: ''
+  }
+
+  handleFormSubmit = (event) => {
+    this.setState({
+      value: event.target.value
+    })
+    this.addToPortfolio(this.props,currentUser, coin.id, this.state.value, coin.price, (new Date().toLocaleString()))
+  }
 
   renderCoins = () => {
     return this.props.coins.map(coin => {
@@ -24,12 +34,12 @@ class Browse extends React.Component {
         <div>
           <CoinStatGraph key={v4()} coin={coin} />
           <br></br><br></br>
-            <Form>
+            <Form onSubmit={event => this.handleSubmit(event)>
               <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>Purchase</Form.Label>
-                <Form.Control type="email" placeholder="# of units" />
+                <Form.Control type="text" value={this.state.value} placeholder="# of units" />
               </Form.Group>
-              <Button onClick={1} className="btn btn-primary btn-large centerButton" type="submit">Confirm Purchase</Button>
+              <Button className="btn btn-primary btn-large centerButton" type="submit">Confirm Purchase</Button>
             </Form>
           </div>
         )

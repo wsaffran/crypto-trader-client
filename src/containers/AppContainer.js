@@ -31,20 +31,20 @@ class AppContainer extends React.Component {
     })
   }
 
-  // addToPortfolio(user_id, coin_id, num_of_coins, price, time_of_purchase) {
-  //   fetch(`localhost:3001/users/${user_id}/purchases`, {method: "POST",
-  //     headers: {"Content-Type": "application/json"},
-  //     body: JSON.stringify({
-  //       user_id: user_id,
-  //       coin_id: coin_id,
-  //       num_of_coins: num_of_coins,
-  //       price: price,
-  //       time_of_purchase: time_of_purchase})
-  //     })
-  //     .then(res => res.json())
-  //     .then(json )
-  //
-  // }
+  addToPortfolio(user_id, coin_id, num_of_coins, price, time_of_purchase) {
+    fetch(`localhost:3001/users/${user_id}/purchases`, {method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        user_id: user_id,
+        coin_id: coin_id,
+        num_of_coins: num_of_coins,
+        price: price,
+        time_of_purchase: time_of_purchase})
+      })
+      .then(res => res.json())
+      .then(json )
+
+  }
 
   componentDidMount() {
     fetch(CryptoAPI)
