@@ -13,11 +13,11 @@ class Browse extends React.Component {
     value: ''
   }
 
-  handleFormSubmit = (event) => {
+  handleFormSubmit = (event, user_id, coin_id, num_of_coins, price, time_of_purchase) => {
     this.setState({
       value: event.target.value
     })
-    this.addToPortfolio(this.props,currentUser, coin.id, this.state.value, coin.price, (new Date().toLocaleString()))
+    this.addToPortfolio(user_id, coin_id, num_of_coins, price, time_of_purchase)
   }
 
   renderCoins = () => {
@@ -29,12 +29,11 @@ class Browse extends React.Component {
   renderCoinInfo = () => {
     return this.props.coins.map(coin => {
       if (coin.classActive === true) {
-        console.log(this.props.currentUser, coin.id, coin.price, (new Date().toLocaleString()))
+        // console.log(this.props.currentUser, coin.id, coin.price, (new Date().toLocaleString()))
         return (
-        <div>
+          <div>
           <CoinStatGraph key={v4()} coin={coin} />
-          <br></br><br></br>
-            <Form onSubmit={event => this.handleSubmit(event)>
+            <Form onSubmit={event => this.handleSubmit(event, this.props.currentUser, coin.id, event.target.value, coin.price, (new Date().toLocaleString()))}>
               <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>Purchase</Form.Label>
                 <Form.Control type="text" value={this.state.value} placeholder="# of units" />
@@ -46,6 +45,7 @@ class Browse extends React.Component {
       }
     })
   }
+
 
   render() {
     return (
