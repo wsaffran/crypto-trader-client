@@ -1,6 +1,5 @@
 import React from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Transaction from '../components/Transaction'
 import {Line} from 'react-chartjs-2';
 
 var date7 = new Date();
@@ -80,42 +79,59 @@ class CoinStatGraph extends React.Component {
     )
   }
 
+  numberWithCommas = (x, decimal) => {
+    const floatNum = parseFloat(x).toFixed(decimal)
+    const num = floatNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num
+  }
 
   render() {
     return (
       <div>
-        <h1>{this.props.coin.name}</h1>
-        <Line
-          data={this.returnData()}
-          width={100}
-          height={50}
-          options={{ maintainAspectRatio: true }}
-        />
-        <div class="row justify-content-center">
-          Stats
+        <div className="row justify-content-center graph">
+          <h1>{this.props.coin.name}</h1>
+          <Line
+            data={this.returnData()}
+            width={70}
+            height={35}
+            options={{ maintainAspectRatio: true }}
+          />
         </div>
-        <Row>
-          <Col xs={4}>
-            {this.props.coin.price}
-          </Col>
-          <Col xs={4}>
-            {this.props.coin.price}
-          </Col>
-          <Col xs={4}>
-            {this.props.coin.price}
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={4}>
-            {this.props.coin.price}
-          </Col>
-          <Col xs={4}>
-            {this.props.coin.price}
-          </Col>
-          <Col xs={4}>
-            {this.props.coin.price}
-          </Col>
-        </Row>
+        <div className="row justify-content-center">
+          {this.props.coin.description}
+        </div>
+        <div className="row coin-stat-graph">
+          <div className="col-sm-4"> Price:
+            {" $" + this.numberWithCommas(this.props.coin.price, 2)}
+          </div>
+          <div className="col-sm-4"> Market Cap:
+            {" $" + this.numberWithCommas(this.props.coin.marketCap, 0)}
+          </div>
+          <div className="col-sm-4"> All time high:
+            {" $" + this.numberWithCommas(this.props.coin.allTimeHigh.price, 2)}
+          </div>
+        </div>
+        <div className="row coin-stat-graph">
+          <div className="col-sm-4"> Total Supply:
+            {" " + this.numberWithCommas(this.props.coin.totalSupply, 0)}
+          </div>
+          <div className="col-sm-4"> Volume:
+            {" " + this.numberWithCommas(this.props.coin.volume)}
+          </div>
+          <div className="col-sm-4"> Change:
+            {" " + this.props.coin.change + "%"}
+          </div>
+        </div>
+        <div className="row coin-stat-graph buttons">
+          <div className="col-sm-8">
+          </div>
+          <div className="col-sm-4">
+            <button type="button" className="btn btn-primary coin-stat-graph" onClick={null}>Transact</button>
+          </div>
+        </div>
+        <div>
+          <Transaction coinInfo={this.props.data} />
+        </div>
       </div>
     )
   }
