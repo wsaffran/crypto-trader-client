@@ -13,7 +13,6 @@ class CryptoPage extends React.Component {
     return (
         <ListGroup.Item id={coin.id} action variant={coin.classActive ? "success" : null} onClick={() => this.props.handleBrowseScrollClick(coin)}> {coin.name} - ({coin.symbol}) </ListGroup.Item>
     )
-
   }
 
   render() {

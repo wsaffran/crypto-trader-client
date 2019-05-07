@@ -27,9 +27,40 @@ ul {
 list-style-type: none;
 }
 
-.scrollable {
-  height: 625px;
+.container-fluid {
+  margin: 20px;
+}
+
+.col-sm-4.scrollable {
+  border:0px;
+  margin:0px;
+  padding:0px;
+  padding-left:40px;
+  padding-right:40px;
+  height: 800px;
   overflow-y: scroll;
+}
+
+.row.coin-stat-graph.buttons {
+  margin: 30px;
+}
+
+.row.coin-stat-graph {
+  margin-top: 10px;
+}
+
+.row.justify-content-center.graph {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+
+.login-body {
+  height: 100vh;
+  display: flex;
+  background-color: rgb(87, 189, 130);
+  transition: background 0.5s ease;
+  position: relative;
 }
 
 @keyframes App-logo-spin {

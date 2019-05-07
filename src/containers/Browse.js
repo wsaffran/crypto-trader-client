@@ -1,10 +1,8 @@
 import React from 'react'
 import CoinObject from '../components/CoinObject'
 import CoinStatGraph from './CoinStatGraph'
+import Transaction from '../components/Transaction'
 import v4 from 'uuid'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-
 
 class Browse extends React.Component {
 
@@ -17,27 +15,29 @@ class Browse extends React.Component {
   renderCoinInfo = () => {
     return this.props.coins.map(coin => {
       if (coin.classActive === true) {
-        return <CoinStatGraph key={v4()} coin={coin} />
+        return (
+          <div>
+            <CoinStatGraph key={v4()} coin={coin} />
+            <Transaction key={v4()} coinInfo={coin}/>
+          </div>
+        )
       }
     })
   }
 
   render() {
     return (
-      <div>
-        <Row>
-          ...
-        </Row>
-        <Row>
-          <Col xs={8}>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-sm-8">
             {this.renderCoinInfo()}
-          </Col>
-          <Col className="scrollable">
-            <listGroup>
+          </div>
+          <div className="col-sm-4 scrollable">
+            <div className="listGroup">
               {this.renderCoins()}
-            </listGroup>
-          </Col>
-        </Row>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
