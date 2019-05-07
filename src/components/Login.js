@@ -14,6 +14,17 @@ class Login extends React.Component {
 
   handleSubmit = () => {
     console.log("loggin in", this.state)
+
+    fetch("http://localhost:3001/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    })
+    .then(res => res.json())
+    .then(console.log)
   }
 
   render() {
