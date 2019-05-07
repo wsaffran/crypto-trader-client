@@ -36,7 +36,7 @@ class Transaction extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Number of Coins:
-          <input type="number" value={this.state.value} onChange={this.handleChange} />
+          <input type="number" value={this.state.num_of_coins} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>

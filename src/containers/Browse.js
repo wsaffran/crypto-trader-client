@@ -1,6 +1,7 @@
 import React from 'react'
 import CoinObject from '../components/CoinObject'
 import CoinStatGraph from './CoinStatGraph'
+import Transaction from '../components/Transaction'
 import v4 from 'uuid'
 
 class Browse extends React.Component {
@@ -14,7 +15,12 @@ class Browse extends React.Component {
   renderCoinInfo = () => {
     return this.props.coins.map(coin => {
       if (coin.classActive === true) {
-        return <CoinStatGraph key={v4()} coin={coin} />
+        return (
+          <div>
+            <CoinStatGraph key={v4()} coin={coin} />
+            <Transaction key={v4()} coinInfo={coin}/>
+          </div>
+        )
       }
     })
   }

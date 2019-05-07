@@ -1,5 +1,4 @@
 import React from 'react'
-import Transaction from '../components/Transaction'
 import {Line} from 'react-chartjs-2';
 
 var date7 = new Date();
@@ -128,9 +127,6 @@ class CoinStatGraph extends React.Component {
           <div className="col-sm-4">
             <button type="button" className="btn btn-primary coin-stat-graph" onClick={null}>Transact</button>
           </div>
-        </div>
-        <div>
-          <Transaction coinInfo={this.props.data} />
         </div>
       </div>
     )
