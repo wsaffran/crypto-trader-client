@@ -77,7 +77,6 @@ class Portfolio extends React.Component {
         total += ( (numCoins * currentPricePerCoin))
       })
     }
-    console.log(total);
     return total + cash
   }
 
@@ -112,10 +111,23 @@ class Portfolio extends React.Component {
     return foundCoin
   }
 
+  getCoinToken = (coin) => {
+    let foundCoin
+
+    this.props.coins.forEach(coins => {
+      if (coins.name === coin) {
+        foundCoin = coins.iconUrl
+      }
+    })
+
+    return foundCoin
+  }
+
   renderRows = () => {
     return this.getTransactions().map(coin => {
       return (
         <tr>
+          <td><img src={this.getCoinToken(coin)} style={{height: 25, width: 25}}/></td>
           <td>{coin}</td>
           <td>{this.getCoinAmount(coin)}</td>
           <td>${this.numberWithCommas(this.getCurrentPrice(coin))}</td>
@@ -246,20 +258,19 @@ class Portfolio extends React.Component {
 
 
   render() {
-    console.log("balance", this.state.user_data.balance);
     return (
       <div className="portfolio">
         <h1>{this.state.user_data.first_name + ' ' + this.state.user_data.last_name + "'s Portfolio"}</h1>
         <br></br>
         <div className="row">
 
-          <div className="col-sm-3" style={{'text-align': 'right'}}>
+          <div className="col-sm-3" style={{'textAlign': 'right'}}>
 
             <h1>Portfolio Value</h1>
             <h1>Cash Value</h1>
             <h1>Capital Gain</h1>
             <h1>Percent Gain</h1>
-            <h3>Num of Transactions</h3>
+            <h3>Transactions</h3>
             <h3>Coins Owned</h3>
           </div>
 
@@ -269,19 +280,21 @@ class Portfolio extends React.Component {
             <h1>${this.numberWithCommas(this.renderCurrentPortfolioBalance() - this.getTotalCostBeforeGain())}</h1>
             <h1>{this.numberWithCommas((this.renderCurrentPortfolioBalance() - this.getTotalCostBeforeGain()) / this.getTotalCostBeforeGain() * 100)}%</h1>
             <h3>{this.state.transactions.length}</h3>
-            <h3>{this.getTransactions().join(", ")}</h3>
+            <h4>{this.getTransactions().join(", ")}</h4>
           </div>
 
           <div className="col-sm-6">
             <Pie data={this.getChartData()} height={450} width={600} options={options}/>
           </div>
         </div>
+        <br></br>
         <Table bordered responsive="sm">
           <thead>
             <tr>
-              <td colSpan="6">Portfolio</td>
+              <td colSpan="7">Portfolio</td>
             </tr>
             <tr>
+              <td>Icon</td>
               <td>Coin</td>
               <td>Amount</td>
               <td>Current Price</td>
@@ -293,6 +306,7 @@ class Portfolio extends React.Component {
           <tbody>
             {this.renderRows()}
             <tr>
+              <td><i class="fas fa-dollar-sign"></i></td>
               <td>Cash</td>
               <td>{this.numberWithCommas((this.state.user_data.balance))}</td>
               <td>$1.00</td>

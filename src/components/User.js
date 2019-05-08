@@ -63,7 +63,6 @@ class User extends React.Component {
   }
 
   render() {
-    console.log(this.state.user_data.first_name, this.state.user_data.last_name);
     return (
       <div>
         <h1>{this.state.user_data.first_name + " " + this.state.user_data.last_name}</h1>

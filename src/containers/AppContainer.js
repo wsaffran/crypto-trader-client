@@ -34,7 +34,12 @@ class AppContainer extends React.Component {
     .then(data => {
       this.setState({
         coins: data.data.coins.map(coin => {
-          return {...coin, classActive: false}
+          if (coin.name.toLowerCase() === 'bitcoin') {
+            return {...coin, classActive: true}
+          } else {
+
+            return {...coin, classActive: false}
+          }
         })
       })
     })
@@ -60,6 +65,7 @@ class AppContainer extends React.Component {
   renderSelection() {
     if (this.state.selection === "learn-more") {
       return <LearnMore />
+      // return <Route path='/learn-more' render={() => <LearnMore /> } />
     } else if (this.state.selection === "browse") {
       return <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
     } else if (this.state.selection === "portfolio") {
@@ -71,10 +77,12 @@ class AppContainer extends React.Component {
 
   render() {
     return (
-      <div className="page-container">
-        <NavBar handleClick={this.handleClick}/>
-        {this.renderSelection()}
-      </div>
+        <div className="page-container">
+          <NavBar handleClick={this.handleClick}/>
+          {this.renderSelection()}
+        </div>
+
+
     )
   }
 

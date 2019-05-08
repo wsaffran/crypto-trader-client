@@ -1,5 +1,4 @@
 import React from 'react'
-import v4 from 'uuid'
 
 class PortfolioTransaction extends React.Component {
 
@@ -108,7 +107,6 @@ class PortfolioTransaction extends React.Component {
 
 
   render() {
-    console.log(this.state.transaction);
     return (
         <form onSubmit={this.handleSubmit}>
           <label>

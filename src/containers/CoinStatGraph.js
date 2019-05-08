@@ -88,7 +88,7 @@ class CoinStatGraph extends React.Component {
     return (
       <div>
         <div className="row justify-content-center graph">
-          <h1>{this.props.coin.name}</h1>
+          <h1><img src={this.props.coin.iconUrl} style={{width: 50, height: 50}}/> {"         " + this.props.coin.name}</h1>
           <Line
             data={this.returnData()}
             width={70}
@@ -119,13 +119,6 @@ class CoinStatGraph extends React.Component {
           </div>
           <div className="col-sm-4"> Change:
             {" " + this.props.coin.change + "%"}
-          </div>
-        </div>
-        <div className="row coin-stat-graph buttons">
-          <div className="col-sm-8">
-          </div>
-          <div className="col-sm-4">
-            <button type="button" className="btn btn-primary coin-stat-graph" onClick={null}>Transact</button>
           </div>
         </div>
       </div>
