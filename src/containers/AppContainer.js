@@ -3,6 +3,7 @@ import Browse from './Browse'
 import Portfolio from './Portfolio'
 import NavBar from '../components/NavBar'
 import LearnMore from '../components/LearnMore'
+import User from '../components/User'
 
 class AppContainer extends React.Component {
 
@@ -63,6 +64,8 @@ class AppContainer extends React.Component {
       return <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
     } else if (this.state.selection === "portfolio") {
       return <Portfolio coins={this.state.coins} />
+    } else if (this.state.selection === "user") {
+      return <User coins={this.state.coins} />
     }
   }
 
