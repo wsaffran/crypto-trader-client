@@ -3,6 +3,7 @@ import Browse from './Browse'
 import Portfolio from './Portfolio'
 import NavBar from '../components/NavBar'
 import LearnMore from '../components/LearnMore'
+import User from '../components/User'
 
 class AppContainer extends React.Component {
 
@@ -33,7 +34,12 @@ class AppContainer extends React.Component {
     .then(data => {
       this.setState({
         coins: data.data.coins.map(coin => {
-          return {...coin, classActive: false}
+          if (coin.name.toLowerCase() === 'bitcoin') {
+            return {...coin, classActive: true}
+          } else {
+
+            return {...coin, classActive: false}
+          }
         })
       })
     })
@@ -59,19 +65,24 @@ class AppContainer extends React.Component {
   renderSelection() {
     if (this.state.selection === "learn-more") {
       return <LearnMore />
+      // return <Route path='/learn-more' render={() => <LearnMore /> } />
     } else if (this.state.selection === "browse") {
       return <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
     } else if (this.state.selection === "portfolio") {
       return <Portfolio coins={this.state.coins} />
+    } else if (this.state.selection === "user") {
+      return <User coins={this.state.coins} />
     }
   }
 
   render() {
     return (
-      <div className="page-container">
-        <NavBar handleClick={this.handleClick}/>
-        {this.renderSelection()}
-      </div>
+        <div className="page-container">
+          <NavBar handleClick={this.handleClick}/>
+          {this.renderSelection()}
+        </div>
+
+
     )
   }
 
