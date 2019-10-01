@@ -40,7 +40,7 @@ class User extends React.Component {
     .then(data => {
       this.setState({
         amount: 0
-      })
+      }, this.props.handlePortfolioSubmit())
     })
   }
 

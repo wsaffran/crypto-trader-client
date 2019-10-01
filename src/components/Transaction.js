@@ -51,7 +51,9 @@ class Transaction extends React.Component {
           {balance: parseFloat(this.state.user_data.balance) - (parseInt(this.state.num_of_coins) * parseFloat(this.props.coinInfo.price))}
         )
       })
-      .then(res => res.json())
+      .then(res => {
+        this.props.handlePortfolioSubmit()
+      })
 
 
     }
@@ -64,7 +66,7 @@ class Transaction extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Buy:
-            <input type="number" value={this.state.num_of_coins} onChange={this.handleChange} />
+            <input type="number" value={this.state.num_of_coins} onChange={this.handleChange}/>
           </label>
           <input type="submit" value="Submit" />
         </form>

@@ -28,6 +28,12 @@ class AppContainer extends React.Component {
     })
   }
 
+  handlePortfolioSubmit = () => {
+    this.setState({
+      selection: "portfolio"
+    }, console.log("hitting the function"))
+  }
+
   componentDidMount() {
     fetch('https://api.coinranking.com/v1/public/coins')
     .then(res => res.json())
@@ -67,11 +73,11 @@ class AppContainer extends React.Component {
       return <LearnMore />
       // return <Route path='/learn-more' render={() => <LearnMore /> } />
     } else if (this.state.selection === "browse") {
-      return <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick}/>
+      return <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick} handlePortfolioSubmit={this.handlePortfolioSubmit}/>
     } else if (this.state.selection === "portfolio") {
       return <Portfolio coins={this.state.coins} />
     } else if (this.state.selection === "user") {
-      return <User coins={this.state.coins} />
+      return <User coins={this.state.coins} handlePortfolioSubmit={this.handlePortfolioSubmit}/>
     }
   }
 

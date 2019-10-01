@@ -18,7 +18,7 @@ class Browse extends React.Component {
         return (
           <div>
             <CoinStatGraph key={v4()} coin={coin} />
-            <Transaction key={v4()} coinInfo={coin}/>
+            <Transaction key={v4()} coinInfo={coin} handlePortfolioSubmit={this.props.handlePortfolioSubmit}/>
           </div>
         )
       }
