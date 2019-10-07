@@ -100,7 +100,8 @@ class PortfolioTransaction extends React.Component {
             {balance: parseFloat(this.props.userData.balance) + (parseFloat(this.state.amount) * parseFloat(coin.price))}
           )
         })
-        .then(res => res.json())
+        .then(res => {
+        this.props.handlePortfolioSubmit()})
       }
     }
   }
@@ -132,4 +133,4 @@ class PortfolioTransaction extends React.Component {
   }
 }
 
-export default PortfolioTransaction
+export default PortfolioTransaction;

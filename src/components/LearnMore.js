@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card'
 
 const LearnMore = (props) => {
   return (
-    <div class='container'>
+    <div class='container' style={{padding:50}}>
     <Card>
       <Card.Header as="h5">What is CryptoTrader?</Card.Header>
       <Card.Body>

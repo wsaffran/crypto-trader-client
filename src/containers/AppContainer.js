@@ -30,8 +30,8 @@ class AppContainer extends React.Component {
 
   handlePortfolioSubmit = () => {
     this.setState({
-      selection: "portfolio"
-    }, console.log("hitting the function"))
+      selection: ""
+    }, () => this.setState({selection:"portfolio"}))
   }
 
   componentDidMount() {
@@ -75,7 +75,7 @@ class AppContainer extends React.Component {
     } else if (this.state.selection === "browse") {
       return <Browse coins={this.state.coins} handleBrowseScrollClick={this.handleBrowseScrollClick} handlePortfolioSubmit={this.handlePortfolioSubmit}/>
     } else if (this.state.selection === "portfolio") {
-      return <Portfolio coins={this.state.coins} />
+      return <Portfolio coins={this.state.coins} handlePortfolioSubmit={this.handlePortfolioSubmit}/>
     } else if (this.state.selection === "user") {
       return <User coins={this.state.coins} handlePortfolioSubmit={this.handlePortfolioSubmit}/>
     }

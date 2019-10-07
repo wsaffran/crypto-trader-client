@@ -259,7 +259,7 @@ class Portfolio extends React.Component {
 
   render() {
     return (
-      <div className="portfolio">
+      <div className="portfolio" style={{padding:50}}>
         <h1>{this.state.user_data.first_name + ' ' + this.state.user_data.last_name + "'s Portfolio"}</h1>
         <br></br>
         <div className="row">
@@ -316,7 +316,7 @@ class Portfolio extends React.Component {
             </tr>
           </tbody>
         </Table>
-      <PortfolioTransaction key={v4()} coins={this.props.coins} getTransactions={this.getTransactions} transactions={this.state.transactions} getCoinName={this.getCoinName} userData={this.state.user_data}/>
+      <PortfolioTransaction key={v4()} coins={this.props.coins} getTransactions={this.getTransactions} transactions={this.state.transactions} getCoinName={this.getCoinName} userData={this.state.user_data} handlePortfolioSubmit={this.props.handlePortfolioSubmit}/>
       </div>
       )
     }

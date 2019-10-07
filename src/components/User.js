@@ -64,7 +64,7 @@ class User extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{padding:50}}>
         <h1>{this.state.user_data.first_name + " " + this.state.user_data.last_name}</h1>
         <h4>Current Balance: ${this.numberWithCommas(parseFloat(this.state.user_data.balance))}</h4>
         {this.displayForm()}
