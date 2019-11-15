@@ -11,7 +11,7 @@ class CryptoPage extends React.Component {
 
   renderCoin = (coin) => {
     return (
-        <ListGroup.Item id={coin.id} action variant={coin.classActive ? "success" : null} onClick={() => this.props.handleBrowseScrollClick(coin)}> <img src={coin.iconUrl} style={{width: 25, height: 25}}/> {coin.name} - ({coin.symbol}) </ListGroup.Item>
+        <ListGroup.Item id={coin.id} key={coin.id} action variant={coin.classActive ? "success" : null} onClick={() => this.props.handleBrowseScrollClick(coin)}> <img src={coin.iconUrl} style={{width: 25, height: 25}}/> {coin.name} - ({coin.symbol}) </ListGroup.Item>
     )
   }
 
