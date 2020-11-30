@@ -30,7 +30,20 @@ class CoinStatGraph extends React.Component {
     days: [`${date7.getMonth()}/${date7.getDate()}`, '', '', '', '', '', `${date6.getMonth()}/${date6.getDate()}`, '', '', '', '', '', `${date5.getMonth()}/${date5.getDate()}`, '', '', '', '', '', `${date4.getMonth()}/${date4.getDate()}`, '', '', '', '', '', `${date3.getMonth()}/${date3.getDate()}`, '', '', '', '', '', `${date2.getMonth()}/${date2.getDate()}`, '', '', '', '', '', `${date1.getMonth()}/${date1.getDate()}`]
   }
 
+  removeTags = (str) => {
+    if ((str===null) || (str===''))
+        return false;
+    else
+        str = str.toString();
+
+    // Regular expression to identify HTML tags in
+    // the input string. Replacing the identified
+    // HTML tag with a null string.
+    return str.replace( /(<([^>]+)>)/ig, '');
+  }
+
   componentDidMount() {
+    console.log(this.props.coin)
     fetch(`https://api.coinranking.com/v1/public/coin/${this.props.coin.id}/history/7d`)
     .then(res => res.json())
     .then(history => {
@@ -97,7 +110,7 @@ class CoinStatGraph extends React.Component {
           />
         </div>
         <div className="row justify-content-center">
-          {this.props.coin.description}
+          {this.removeTags(this.props.coin.description)}
         </div>
         <div className="row coin-stat-graph">
           <div className="col-sm-4"> Price:
